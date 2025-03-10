@@ -75,7 +75,7 @@ use std::fmt::Result;
 
 // here is the issue since both bring in the Result struct into the scope the rust compiler will not understand which Result type to use
 
-//solution :
+//solution 1:
 
 use std::io;
 use std::fmt;
@@ -85,6 +85,18 @@ fn function1() -> fmt::Result {
 }
 
 fn function2() -> io::Result<()> {
+    // --snip--
+}
+
+// solution 2 :
+use std::io::Result;
+use std::fmt::Result as fmtResult; // use as to name your module import
+
+fn function1() -> Result {
+    // --snip--
+}
+
+fn function2() -> IoResult<()> {
     // --snip--
 }
 ```
