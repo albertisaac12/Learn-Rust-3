@@ -80,6 +80,11 @@ use std::fmt::Result;
 use std::io;
 use std::fmt;
 
-io::Result;
-fmt::Result;
+fn function1() -> fmt::Result {
+    // --snip--
+}
+
+fn function2() -> io::Result<()> {
+    // --snip--
+}
 ```
