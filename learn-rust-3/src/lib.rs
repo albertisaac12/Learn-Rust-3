@@ -103,8 +103,60 @@
 //===========================================================================
 
 /* example problem */
-mod front_of_house;
-mod abc {
+// mod front_of_house;
+// mod abc {
     
+// }
+
+//========================================================================
+// too much work
+// use std::io;
+// use std::cmp::Ordering;
+
+// solution
+// use std::{io,cmp::Ordering};
+
+
+// problem
+// use std::io;
+// use std::io::Write;
+
+// solution
+// use std::io::{self,Write};
+
+//===========================================================================
+
+// mod front_of_house;
+
+// use front_of_house::hosting;
+
+// pub fn eat_at_restaurant() {
+//     hosting::add_to_waitlist();
+// }
+
+//===========================================================================
+
+// this will be my main library module
+
+// catalog module // add and remove book
+// services module // borrow and return book
+//users module // register book
+
+
+
+mod library  {
+
+    const users:[i32;5] = [3; 5];
+
+    mod catalog{
+
+    }
+    mod services{
+
+    }
+    mod users{
+
+    }
+
 }
 

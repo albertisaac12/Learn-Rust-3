@@ -100,3 +100,24 @@ fn function2() -> IoResult<()> {
     // --snip--
 }
 ```
+
+## Ways to bring modules or types or traits into scope
+
+```rust
+
+use std::io;
+use std::cmp::Ordering;
+// for the above two instead use this
+use std::{io,cmp::Ordering};
+
+use std::io;
+use std::io::Write;
+// for the above two instead use this
+use std::io::{self,Write};
+```
+
+## The Glob operator \* If we want to bring all public items defined in a path into scope
+
+```rust
+use std::collections::*;
+```
