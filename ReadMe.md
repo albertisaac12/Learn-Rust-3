@@ -121,3 +121,34 @@ use std::io::{self,Write};
 ```rust
 use std::collections::*;
 ```
+
+## Strings
+
+```rust
+// use format macro to concat the strings
+
+let s1 = String::from("tic");
+let s2 = String::from("tac");
+let s3 = String::from("toe");
+
+let s = format!("{s1}-{s2}-{s3}");
+
+```
+
+The `format!` macro works like println!, but instead of printing the output to the screen, it returns a String with the contents.
+
+### NOTE : String is essentially a wrapper around the Vec<u8>
+
+Look at strings from Rust’s perspective: as bytes, scalar values, and grapheme clusters (the closest thing to what we would call letters).
+
+```rust
+    let s1 = String::from("Hello, ");
+    let s2 = String::from("world!");
+    let s3 = s1 + &s2; // note s1 has been moved here and can no longer be used
+
+    // + => fn add(self, s: &str) -> String {
+
+    // But wait—the type of &s2 is &String, not &str, as specified in the second parameter to add. So why does it compile?
+
+    // The reason we’re able to use &s2 in the call to add is that the compiler can coerce the &String argument into a &str. When we call the add method, Rust uses a deref coercion, which here turns &s2 into &s2[..].
+```

@@ -8,3 +8,15 @@ edition = "2024"
 [[bin]]
 name = "collections"
 path ="src/Collections/collections.rs"
+
+[[bin]]
+name = "string"
+path ="src/Collections/StringsC.rs"
+
+[[bin]]
+name = "hashmap"
+path ="src/Collections/hashMaps.rs"
+
+[[bin]]
+name = "problem1"
+path ="src/Collections/problem1.rs"
