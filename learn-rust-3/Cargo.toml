@@ -20,3 +20,15 @@ path ="src/Collections/hashMaps.rs"
 [[bin]]
 name = "problem1"
 path ="src/Collections/problem1.rs"
+
+[[bin]]
+name = "error1"
+path ="src/Tests/udemy1.rs"
+
+[[bin]]
+name = "errorb1"
+path ="src/Tests/book1.rs"
+
+[[bin]]
+name = "propagation"
+path ="src/Tests/propagation.rs"

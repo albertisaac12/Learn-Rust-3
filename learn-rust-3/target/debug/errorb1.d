@@ -1,0 +1,1 @@
+/home/abhi/rust-leran/Pickup/Learn-Rust-3/learn-rust-3/target/debug/errorb1: /home/abhi/rust-leran/Pickup/Learn-Rust-3/learn-rust-3/src/Tests/book1.rs /home/abhi/rust-leran/Pickup/Learn-Rust-3/learn-rust-3/src/lib.rs

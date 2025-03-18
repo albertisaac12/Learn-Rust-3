@@ -152,3 +152,43 @@ Look at strings from Rust’s perspective: as bytes, scalar values, and grapheme
 
     // The reason we’re able to use &s2 in the call to add is that the compiler can coerce the &String argument into a &str. When we call the add method, Rust uses a deref coercion, which here turns &s2 into &s2[..].
 ```
+
+## Error Handling
+
+Rust doesn’t have exceptions. Instead, it has the type `Result<T, E>` for `recoverable errors` and the `panic!` macro that stops execution when the program encounters an `unrecoverable error`.
+
+Unwinding the Stack or Aborting in Response to a Panic
+By default, when a panic occurs the program starts unwinding, which means Rust walks back up the stack and cleans up the data from each function it encounters. However, walking back and cleaning up is a lot of work. Rust, therefore, allows you to choose the alternative of immediately aborting, which ends the program without cleaning up.
+
+Memory that the program was using will then need to be cleaned up by the operating system. If in your project you need to make the resultant binary as small as possible, you can switch from unwinding to aborting upon a panic by adding panic = 'abort' to the appropriate `[profile]` sections in your Cargo.toml file. For example, if you want to abort on panic in release mode, add this:
+
+```rust
+[profile.release]
+panic = 'abort'
+```
+
+```bash
+RUST_BACKTRACE = 1 cargo run
+```
+
+## Error Propagation
+
+`?`
+
+```rust
+
+use std::fs::File;
+use std::io::{self, Read};
+fn read_username_from_file() -> Result<String, io::Error> {
+    let mut username_file = File::open("hello.txt")?;
+    let mut username = String::new();
+    username_file.read_to_string(&mut username)?;
+    Ok(username)
+}
+
+// ?
+//If the value of the Result is an Ok, the value inside the Ok will get returned from this expression, and the program will continue. If the value is an Err, the Err will be returned from the whole function as if we had used the return keyword so the error value gets propagated to the calling code.
+
+```
+
+There is a difference between what the match expression and what the ? operator does: error values that have the ? operator called on them go through the from function, defined in the From trait in the standard library, which is used to convert values from one type into another. When the ? operator calls the from function, the error type received is converted into the error type defined in the return type of the current function. This is useful when a function returns one error type to represent all the ways a function might fail, even if parts might fail for many different reasons.
