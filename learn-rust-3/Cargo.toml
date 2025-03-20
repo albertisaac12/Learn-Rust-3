@@ -36,3 +36,7 @@ path ="src/Tests/propagation.rs"
 [[bin]]
 name = "generic"
 path ="src/Generics/generic.rs"
+
+[[bin]]
+name = "generic2"
+path ="src/Generics/generics2.rs"

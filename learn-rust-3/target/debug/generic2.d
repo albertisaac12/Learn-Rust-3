@@ -1,0 +1,1 @@
+/home/abhi/rust-leran/Pickup/Learn-Rust-3/learn-rust-3/target/debug/generic2: /home/abhi/rust-leran/Pickup/Learn-Rust-3/learn-rust-3/src/Generics/generics2.rs /home/abhi/rust-leran/Pickup/Learn-Rust-3/learn-rust-3/src/lib.rs
