@@ -40,3 +40,7 @@ path ="src/Generics/generic.rs"
 [[bin]]
 name = "generic2"
 path ="src/Generics/generics2.rs"
+
+[[bin]]
+name = "trait1"
+path ="src/Traits/1-trait.rs"
