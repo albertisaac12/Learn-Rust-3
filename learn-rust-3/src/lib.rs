@@ -164,6 +164,11 @@
 
 pub trait Summary {
     fn summarize(&self) -> String;
+
+    fn blah(&self) { // will throw error is summarize() is not implemented in ths impl
+       let str=  (&self).summarize();
+       println!("blah");
+    }
 }
 
 pub struct NewsArticle {
@@ -176,6 +181,10 @@ pub struct NewsArticle {
 impl Summary for NewsArticle {
     fn summarize(&self) -> String {
         format!("{}, by {} ({})", self.headline, self.author, self.location)
+    }
+
+    fn blah(&self) {
+        print!("meow meow"); // overrides the default implementation
     }
 }
 
