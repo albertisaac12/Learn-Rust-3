@@ -41,6 +41,6 @@ fn main() {
 
 
 
-fn takeTraitVar(item: &impl Summary){
+fn takeTraitVar(item: &impl Summary){ // take a reference to a variable that implements Summary trait
     item.blah();
 }

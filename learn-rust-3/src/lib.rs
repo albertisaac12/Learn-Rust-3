@@ -166,7 +166,7 @@ pub trait Summary {
     fn summarize(&self) -> String;
 
     fn blah(&self) { // will throw error is summarize() is not implemented in ths impl
-       let str=  (&self).summarize();
+       let str=  &self.summarize(); // here use self and it will deref it but use &self it will not deref it 
        println!("blah");
     }
 }
