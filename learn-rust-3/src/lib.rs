@@ -1,3 +1,5 @@
+use std::fmt::Display;
+
 // mod front_of_the_house {
 //     mod hosting {
 //         fn add_to_waitlist() {}
@@ -198,5 +200,68 @@ pub struct Tweet {
 impl Summary for Tweet {
     fn summarize(&self) -> String {
         format!("{}: {}", self.username, self.content)
+    }
+}
+
+
+struct Point<x1,y1>{
+    x:x1,
+    y:y1
+}
+
+impl<x2,y2> Point<x2,y2> {
+    fn mixup<x3,y3>(self,other:Point<x3,y3>)-> Point<x2,y3>{
+        Point { x: self.x, y: other.y }
+    }
+}
+
+
+pub struct blah {
+    pub username: String
+}
+
+pub trait balh1 {
+    fn maa(&self)-> usize;
+
+    fn meow(&self);
+
+    fn callCat(&self) {
+        self.meow();
+    }
+}
+
+impl balh1 for blah {
+    
+    fn maa(&self) -> usize {
+        (&self).username.len()
+    }
+
+    fn meow(&self) {
+        print!("meow , meow");
+    }
+}
+
+/*
+
+    Rust has a feature called implicit dereferencing. When you access a field or method of a struct through a reference, Rust automatically dereferences the reference for you.
+Therefore, when you write self.username, Rust automatically dereferences self to access the username field of the blah struct.
+
+
+*/
+
+
+
+// conditional trait bound examples
+
+struct cat<T,U>{
+    name: T,
+    breed: U
+}
+
+impl<X: Display,Y:Display> cat<X,Y> {
+    // here X and Y are not bound by any Trait and will result in error as if a type is generic and will be used to inside print without being bound by the Display
+
+    fn pt(&self) {
+        println!("{},{}",self.breed,self.name)
     }
 }

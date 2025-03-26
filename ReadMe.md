@@ -202,3 +202,5 @@ Finally, we’ll discuss lifetimes: a variety of generics that give the compiler
 Rust can convert a `&Vec<>` to a `&[]`
 
 `ALSO REMEMBER THAT RUST CAN DO AUTO DEREF` refer to ownership and borrowing in the book
+
+Closures and iterators create types that only the compiler knows or types that are very long to specify.
