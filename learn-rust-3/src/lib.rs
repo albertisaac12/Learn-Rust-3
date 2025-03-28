@@ -265,3 +265,50 @@ impl<X: Display,Y:Display> cat<X,Y> {
         println!("{},{}",self.breed,self.name)
     }
 }
+
+/*//////////////////////////////////////////////////////////////
+                    BOUNDED-TRAIT-FUNCTION-CONDITION
+////////////////////////////////////////////////////////////// */
+
+impl <M:PartialOrd,N: PartialOrd> cat <M,N> {
+    // fn compareNameANDBreed(&self)->bool {
+
+    //     if self.name > self.breed { // these are two different types hence cant be compared even though they implement the PartialOrd, reason is that compiler only allows the same type to be compared.
+    //         return true;
+    //     }
+
+    //     false
+
+    // }
+}
+
+
+// solution to the above
+impl<T: PartialOrd> cat<T,T> {
+    fn cmmp(&self)-> bool {
+        self.name > self.breed
+    }
+} 
+impl <M:PartialOrd+ ToString,N: PartialOrd+ToString> cat <M,N> {
+    fn cmpn(&self)-> bool {
+        self.breed.to_string() < self.name.to_string()
+    }
+}
+
+
+// We can also conditionally implement a trait for any type that implements another trait.
+pub trait describe {
+    fn discription(&self);
+}
+
+impl<T:Display> describe for T { // blanket implementations
+    fn discription(&self) {
+        println!("\ngood");
+    }
+}
+
+struct meowmeow<'a> {
+    s: &'a str
+}
+
+

@@ -6,6 +6,8 @@ use std::fmt::{Debug, Display};
 
 use learn_rust_3::{NewsArticle,Summary,Tweet,blah,balh1};
 
+use learn_rust_3::{describe};
+
 #[derive(Debug)]
 struct Point<x1,y1>{
     x:x1,
@@ -108,6 +110,9 @@ fn main() {
 
     catCaller2(&var);
 
+
+    5.discription();
+
 }
 
 
@@ -172,4 +177,19 @@ fn aa() -> impl balh1 {
 
     // dirent types that implement blah1 cant be returned only a single type at a type for a single function scope can be used
 }
+
+
+
+/* //////////////////////////////////////////////////////////////
+                                LIFETIME
+////////////////////////////////////////////////////////////// */
+
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str { // this means that the the reference being returned is valid as long as the lifetime a. Also the shorter of both the lifetimes of x and y will be the lifetime of the return value.
+    if x.len() < y.len() {
+        y
+    }else{
+        x
+    }
+} 
+
 

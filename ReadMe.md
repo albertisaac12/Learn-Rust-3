@@ -204,3 +204,47 @@ Rust can convert a `&Vec<>` to a `&[]`
 `ALSO REMEMBER THAT RUST CAN DO AUTO DEREF` refer to ownership and borrowing in the book
 
 Closures and iterators create types that only the compiler knows or types that are very long to specify.
+
+```plaintext
+We can also conditionally implement a trait for any type that implements another trait.
+Implementations of a trait on any type that satisfies the trait bounds are called blanket implementations
+```
+
+## Lifetimes
+
+```rust
+
+fn longest<'a>(x: &'a str, y: &'a str) -> &'a str {
+    if x.len() > y.len() {
+        x
+    } else {
+        y
+    }
+}
+
+/*
+
+     In practice, it means that the lifetime of the reference returned by the longest function is the same as the smaller of the lifetimes of the values referred to by the function arguments.
+
+*/
+
+
+```
+
+## Note on 'a
+
+`'a` tells us a couple of things, it lets us know for how long the returned reference must be valid for. It tells us that the returned reference is valid for the shorter of the lifetimes of the function parameters being passed into the above longest function
+
+So why does the program not compile when 'a is not used ?
+In simple words in the above the compiler is not aware of the lifetimes of x and y in the function. Hence it is impossible for the compiler to know for how long the returned reference is valid for.
+
+```plaintext
+Summary
+✅ Rust assigns 'a as the smallest overlapping lifetime of x and y.
+✅ The returned reference is valid for the same time as the shortest of x or y.
+❌ If one reference lives shorter, the return value cannot outlive it.
+
+This prevents dangling references and ensures memory safety. 🚀
+```
+
+## **Lifetimes on function or method parameters are called input lifetimes, and lifetimes on return values are called output lifetimes.**
